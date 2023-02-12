@@ -7,18 +7,17 @@ module.exports = {
   ],
   theme: {
     extend: {},
-    screens: {
-      "2xs": "375px",
-      xs: "428px",
-      sm: "744px",
-      md: "834px",
-      lg: "1024px",
-      xl: "1440px",
-      "2xl": "1920px",
-    },
     container: {
       center: true,
-      screens: { "2xl": "1440px" },
+      screens: {
+        "2xs": "375px",
+        xs: "428px",
+        sm: "744px",
+        md: "834px",
+        lg: "1024px",
+        xl: "1441px",
+        "2xl": "1920px",
+      },
     },
   },
   plugins: [],
