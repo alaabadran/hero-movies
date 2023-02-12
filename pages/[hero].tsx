@@ -2,8 +2,10 @@
 
 import { GetServerSideProps, NextPage } from "next";
 import { Movie } from "@/types/movie";
+import { getRandomMovie, getMovieURL } from "@/services/moviesServices";
+import { AsyncReturnType } from "@/types/global";
 
-type PagePropsType = {};
+type PagePropsType = any;
 
 const MoviesPage: NextPage<PagePropsType> = (props) => {
   return <div>Movies page</div>;
@@ -13,38 +15,25 @@ export const getServerSideProps: GetServerSideProps<
   PagePropsType,
   { hero?: string }
 > = async ({ params, req, res, locale }) => {
-  try {
-    // console.log(params.hero);
-    if (!params?.hero?.length || !params?.hero) {
-      return {
-        notFound: true,
-      };
-    }
-
-    // if (
-    //   !params?.hero[1] ||
-    //   params?.hero[1] != convertToSlug(hero.name)
-    // ) {
-    //   return {
-    //     redirect: {
-    //       statusCode: 307,
-    //       destination: getMovieLink(hero.name),
-    //     },
-    //   };
-    // }
-
-    // setCacheHeaders(res, 10, 10);
-
-    const movies: Array<Movie> = [];
-
+  // console.log(params.hero);
+  if (!params?.hero?.length || !params?.hero) {
     return {
-      props: {
-        movies,
-      },
+      notFound: true,
     };
-  } catch (error) {
-    throw new Error(`Artist-View.getServerSideProps: ${error}`);
   }
+
+  // console.log(await getRandomMovie(params?.hero));
+  const movie = await getRandomMovie(params?.hero);
+  // console.log(await getMovieURL(movie));
+
+  // redirects to a random movie
+  return {
+    props: {},
+    redirect: {
+      permanent: false,
+      destination: await getMovieURL(movie),
+    },
+  };
 };
 
 export default MoviesPage;

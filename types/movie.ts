@@ -47,3 +47,12 @@ export interface Movie {
   website: string;
   response: boolean;
 }
+
+export interface MovieObj {
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
+  hero?: string;
+}
