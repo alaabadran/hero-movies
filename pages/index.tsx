@@ -15,18 +15,16 @@ const inter = Inter({ subsets: ["latin"] });
 const HomePage: NextPage<SuperHeros> = (props) => {
   return (
     <>
-      <div className="container mx-auto">
-        <h1 className="text-4xl my-5">
-          Choose your Super Hero to get a movie suggestion
-        </h1>
-        {props.heros ? (
-          <>
-            <Heros heros={props.heros} />
-          </>
-        ) : (
-          ""
-        )}
-      </div>
+      <h1 className="text-4xl my-5">
+        Choose your Super Hero to get a movie suggestion
+      </h1>
+      {props.heros ? (
+        <>
+          <Heros heros={props.heros} />
+        </>
+      ) : (
+        ""
+      )}
     </>
   );
 };
