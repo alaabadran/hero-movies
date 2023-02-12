@@ -43,6 +43,10 @@
   --card-border-rgb: 131, 134, 135;
 }
 
+.rounded {
+  transition: all 0.2s;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

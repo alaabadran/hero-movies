@@ -14,9 +14,10 @@ const HomePage: NextPage<SuperHeros> = (props) => {
   return (
     <>
       <Animator>
-        <h1 className="text-4xl my-5">
+        <h1 className="text-4xl my-5">Featured</h1>
+        <p className="text-slate-300">
           Choose your Super Hero to get a movie suggestion
-        </h1>
+        </p>
         {props.heros ? (
           <>
             <Heros heros={props.heros} />

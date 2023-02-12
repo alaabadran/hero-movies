@@ -24,7 +24,7 @@ const MoviePage: NextPage<PagePropsType> = (props) => {
               <h2 className="text-2xl my-2 w-3/4">{movie.Title}</h2>
               <Link
                 className="h-fit border border-lime-600	bg-lime-900	rounded py-2 px-4"
-                href={`/${makeURL(props.heroName)}`}
+                href={`${makeURL(props.heroName)}`}
               >
                 Pick another movie
               </Link>
