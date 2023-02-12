@@ -17,7 +17,7 @@ const HomePage: NextPage<SuperHeros> = (props) => {
   return (
     <>
       <div className="container mx-auto">
-        <h1>Home</h1>
+        <h1>Choose your Super Hero to get a movie suggestion</h1>
         {props.heros ? (
           <>
             <Heros heros={props.heros} />

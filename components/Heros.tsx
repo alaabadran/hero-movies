@@ -5,11 +5,12 @@ export const Heros = (props: SuperHeros) => {
     <>
       {props.heros ? (
         <div className="flex flex-wrap">
-          {console.log(props.heros[0])}
-          {props.heros.map((item: any) => {
+          {props.heros.map((item: any, i: number) => {
             return (
-              <div className="w-1/5 p-2">
+              <div key={i} className="w-1/5 p-2">
                 <Link href="/">
+                  {/* using Next Image component requires adding 
+                  Width and Height properties, this doesn't work properly with responsive */}
                   <img src={item.image} alt={item.name} />
                   {item?.name}
                 </Link>
