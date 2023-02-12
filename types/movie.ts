@@ -1,6 +1,6 @@
 export type APIKEY = string;
 
-interface RatingsType {
+interface IRatingsType {
   source: string;
   value: string;
 }
@@ -20,7 +20,8 @@ interface RatingsType {
   }
 ];*/
 
-export interface Movie {
+// Movie Details
+export interface IMovieDetails {
   title: string;
   year: number;
   rated: string;
@@ -35,7 +36,7 @@ export interface Movie {
   country: string;
   awards: string;
   poster: string;
-  ratings: Array<RatingsType>;
+  ratings: Array<IRatingsType>;
   metascore: number;
   imdbRating: number; // 5.6
   imdbVotes: string | number; //"270,620"
@@ -48,7 +49,8 @@ export interface Movie {
   response: boolean;
 }
 
-export interface MovieObj {
+// Movie in list of movies.
+export interface IMovieResult {
   Title: string;
   Year: string;
   imdbID: string;

@@ -4,6 +4,7 @@ import { getMovieDetails } from "@/services/moviesServices";
 import { GetServerSideProps, NextPage } from "next";
 import { Rating } from "@/components/Ratings";
 import { makeURL } from "@/services/utils";
+import { IMovieDetails } from "@/types/movie";
 
 type PagePropsType = any;
 type ratingType = { Source: string; Value: string };
@@ -23,7 +24,7 @@ const MoviePage: NextPage<PagePropsType> = (props) => {
               <h2 className="text-2xl my-2 w-3/4">{movie.Title}</h2>
               <Link
                 className="h-fit border border-lime-600	bg-lime-900	rounded py-2 px-4"
-                href={`/${makeURL(movie.hero)}`}
+                href={`/${makeURL(props.heroName)}`}
               >
                 Pick another movie
               </Link>
@@ -80,9 +81,17 @@ const MoviePage: NextPage<PagePropsType> = (props) => {
 };
 
 export const getServerSideProps: GetServerSideProps<
-  PagePropsType,
-  { hero?: string; imdbID?: string }
+  {
+    heroName: string;
+    movie: IMovieDetails;
+  },
+  { movieDetails: string[] }
 > = async ({ params, req, res, locale }) => {
+  if (!params?.movieDetails?.length || !params?.movieDetails) {
+    return {
+      notFound: true,
+    };
+  }
   // console.log(params.movieDetails[0]);
   // params.movieDetails[0] => hero
   // params.movieDetails[1] => imdbID
@@ -90,9 +99,10 @@ export const getServerSideProps: GetServerSideProps<
 
   return {
     props: {
+      heroName: params.movieDetails[0],
       movie: await getMovieDetails(
-        params?.movieDetails[0],
-        params?.movieDetails[1]
+        params.movieDetails[0],
+        params.movieDetails[1]
       ),
     },
   };

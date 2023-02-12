@@ -2,7 +2,7 @@
 
 import { GetServerSideProps, NextPage } from "next";
 import Animator from "@/components/Animator";
-import { Movie } from "@/types/movie";
+import { IMovieDetails } from "@/types/movie";
 import { getRandomMovie, getMovieURL } from "@/services/moviesServices";
 import { AsyncReturnType } from "@/types/global";
 
@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps<
   }
 
   // console.log(await getRandomMovie(params?.hero));
-  const movie = await getRandomMovie(params?.hero);
+  const movie = await getRandomMovie(params.hero);
   // console.log(await getMovieURL(movie));
 
   // redirects to a random movie
@@ -36,7 +36,7 @@ export const getServerSideProps: GetServerSideProps<
     props: {},
     redirect: {
       permanent: false,
-      destination: await getMovieURL(movie),
+      destination: await getMovieURL(movie, params.hero),
     },
   };
 };
