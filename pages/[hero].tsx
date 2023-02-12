@@ -1,6 +1,7 @@
 // This will display list of movies per a selected Super Hero
 
 import { GetServerSideProps, NextPage } from "next";
+import Animator from "@/components/Animator";
 import { Movie } from "@/types/movie";
 import { getRandomMovie, getMovieURL } from "@/services/moviesServices";
 import { AsyncReturnType } from "@/types/global";
@@ -8,7 +9,11 @@ import { AsyncReturnType } from "@/types/global";
 type PagePropsType = any;
 
 const MoviesPage: NextPage<PagePropsType> = (props) => {
-  return <div>Movies page</div>;
+  return (
+    <div>
+      <Animator>Movies page</Animator>
+    </div>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps<
